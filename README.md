@@ -440,20 +440,14 @@ Trigger a Pipeline
 
 Lets start a pipeline to build and deploy the backend application using tkn:
 
-    tkn pipeline start build-and-deploy \
-         -w name=shared-workspace,claimName=source-pvc \
-         -p deployment-name=vote-api \
-         -p git-url=https://github.com/IBMDeveloperUK/BSOK-vote-api.git \
-         -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/vote-api
+$ tkn pipeline start build-and-deploy \
+    -w name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/03_persistent_volume_claim.yaml \
+    -p deployment-name=pipelines-vote-api \
+    -p git-url=https://github.com/openshift/pipelines-vote-api.git \
+    -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/pipelines-vote-api \
+    --use-param-defaults
 
-You should see output like the example below:
 
-    $ tkn pipeline start build-and-deploy \
-    >     -w name=shared-workspace,claimName=source-pvc \
-    >     -p deployment-name=vote-api \
-    >     -p git-url=https://github.com/IBMDeveloperUK/BSOK-vote-api.git \
-    >     -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/vote-api
-    Pipelinerun started: build-and-deploy-run-gxv7x
 
 In order to track the pipelinerun progress run:
 
@@ -462,20 +456,14 @@ Note:  'gxv7x' will vary, please run the given output in the terminal
 
 Similarly, start a pipeline to build and deploy the frontend application:
 
-    tkn pipeline start build-and-deploy \
-        -w name=shared-workspace,claimName=source-pvc \
-        -p deployment-name=vote-ui \
-        -p git-url=http://github.com/IBMDeveloperUK/BSOK-vote-ui.git \
-        -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/vote-ui
-        --use-param-defaults
+$ tkn pipeline start build-and-deploy \
+    -w name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/03_persistent_volume_claim.yaml \
+    -p deployment-name=pipelines-vote-ui \
+    -p git-url=https://github.com/openshift/pipelines-vote-ui.git \
+    -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/pipelines-vote-ui \
+    --use-param-defaults
 
----
 
-    tkn pipeline start build-and-deploy \
-        -w name=shared-workspace,claimName=source-pvc \
-        -p deployment-name=vote-ui \
-        -p git-url=http://github.com/IBMDeveloperUK/BSOK-vote-ui.git \
-        -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/vote-ui
 
 As soon as you start the build-and-deploy pipeline, a pipelinerun will be instantiated and pods will be created to execute the tasks that are defined in the pipeline. See the list of pipelines by running the command below.
 
