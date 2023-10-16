@@ -29,6 +29,8 @@ This tutorial walks you through pipeline concepts and how to create and run a si
 You will need the following to complete the exercises in this lab:
 -	Access to an OpenShift 4 cluster.
 -	You will also use the Tekton [CLI](https://github.com/tektoncd/cli#installing-tkn) (tkn)
+
+-	or install on windows : https://tekton.dev/docs/cli/
  
 ## Setting up 
 Note: The sample output shown in the lab guide may be slightly different than what you see in the output when you issue the commands for your cluster.
@@ -242,6 +244,10 @@ Install the *apply-manifests* and *update-deployment tasks* from the repository 
     oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/01_apply_manifest_task.yaml
 
     oc create -f https://raw.githubusercontent.com/openshift/pipelines-tutorial/master/01_pipeline/02_update_deployment_task.yaml
+
+
+    check the yaml source codes for above  :  https://github.com/openshift/pipelines-tutorial
+    
 
 You can take a look at the tasks you created using the Tekton CLI:
 
