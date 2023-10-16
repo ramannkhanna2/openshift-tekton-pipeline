@@ -467,6 +467,7 @@ Similarly, start a pipeline to build and deploy the frontend application:
         -p deployment-name=vote-ui \
         -p git-url=http://github.com/IBMDeveloperUK/BSOK-vote-ui.git \
         -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/vote-ui
+        --use-param-defaults
 
 ---
 
